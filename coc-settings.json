@@ -1,0 +1,7 @@
+{
+    "diagnostic.enable": true,
+    "diagnostic.level":"warning",
+    "diagnostic.errorSign":"×",
+    "diagnostic.warningSign": "~",
+    "python.pythonPath":"/usr/bin/python3"
+}
