@@ -6,13 +6,15 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Yggdroot/LeaderF'                                 "文件、函数管理
     Plug 'voldikss/vim-floaterm'                            "内置终端
     Plug 'vim-airline/vim-airline'                          "vim状态栏
-    Plug 'morhetz/gruvbox'
+    Plug 'morhetz/gruvbox'                                  "真彩色主题
     Plug 'preservim/nerdtree'                               "目录树
-    Plug 'puremourning/vimspector'
+    Plug 'puremourning/vimspector'                          "调试
     Plug 'kyazdani42/nvim-web-devicons'                     " Recommended (for coloured icons)
     "Plug 'ryanoasis/vim-devicons'                           " Icons without colours
     Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
     Plug 'csfenghan/custom-vim'
+    Plug 'tpope/vim-fugitive'                               " 在vim中执行git命令
+    Plug 'airblade/vim-gitgutter'                           " 显示改动
 call plug#end()
 
 source ~/.config/nvim/my_config.vim

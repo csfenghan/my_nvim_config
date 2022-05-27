@@ -13,10 +13,8 @@ nmap <silent> [g            <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g            <Plug>(coc-diagnostic-next)
 nmap <silent> K             :call Show_documentation()<CR>
 
-nmap <silent> gp            <Plug>(coc-git-prevchunk)
-nmap <silent> gn            <Plug>(coc-git-nextchunk)
-nmap <silent> cp            <Plug>(coc-git-prevconflict)
-nmap <silent> cn            <Plug>(coc-git-nextconflict)
+nmap <silent> [c            <Plug>(GitGutterPrevHunk)
+nmap <silent> ]c            <Plug>(GitGutterNextHunk)
 
 " 批量注释
 vmap <silent> ]c            :call custom#Comment()<CR>
@@ -80,3 +78,10 @@ nmap <silent> <leader><F8>  <Plug>VimspectorStepOut
 nmap <silent> <F9>          <Plug>VimspectorToggleBreakpoint
 nmap <silent> <leader><F9>  <Plug>VimspectorAddFunctionBreakpoint
 nmap <silent> <F10>         <Plug>VimspectorStepOver
+
+"""""""""""""""""""""""""""""""""
+" 其他辅助功能
+"""""""""""""""""""""""""""""""""
+command OpenInit            e ~/.config/nvim/init.vim
+command OpenConfig          e ~/.config/nvim/my_config.vim
+command OpenShortcut        e ~/.config/nvim/my_shortcut.vim
