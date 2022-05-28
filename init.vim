@@ -35,6 +35,11 @@ set encoding=UTF-8
 set fileencodings=utf-8,ucs-bom,cp936,gbk,gbk2312
 set fileencoding=utf-8
 
+augroup VCenterCursor                                       " 光标总是在居中附近
+  au!
+  au BufEnter,WinEnter,WinNew,VimResized *,*.*
+        \ let &scrolloff=winheight(win_getid())/3
+augroup END
 """""""""""""""""""""""""""""""""""""""
 "  局部基础配置
 """""""""""""""""""""""""""""""""""""""
