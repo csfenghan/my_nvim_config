@@ -62,13 +62,15 @@ tmap <silent> <A-=>         <C-\><C-n>:FloatermToggle<CR>
 tmap <silent> <A-q>         <c-\><c-n> 
 
 " 编译/运行命令
-nmap <silent> <F2>          :call QuickCommand("compile", 1)<CR>
-tmap <silent> <F2>          <C-\><C-n>:call QuickCommand("compile", 0)<CR>
-nmap <silent> <F3>          :call QuickCommand("run", 1)<CR>
-tmap <silent> <F3>          <C-\><C-n>:call QuickCommand("run", 0)<CR>
+nmap <silent> <F2>          :call QuickCommand("F2", 1)<CR>
+tmap <silent> <F2>          <C-\><C-n>:call QuickCommand("F2", 0)<CR>
+nmap <silent> <F3>          :call QuickCommand("F3", 1)<CR>
+tmap <silent> <F3>          <C-\><C-n>:call QuickCommand("F3", 0)<CR>
+nmap <silent> <F4>          :call QuickCommand("F4", 1)<CR>
+tmap <silent> <F4>          <C-\><C-n>:call QuickCommand("F4", 0)<CR>
 
 " 调试命令
-nmap <silent> <F5>          :<Plug>VimspectorContinue<CR>
+nmap <silent> <F5>          <Plug>VimspectorContinue
 nmap <silent> <leader><F5>  <Plug>VimspectorRestart
 nmap <silent> <F6>          <Plug>VimspectorStop
 nmap <silent> <leader><F6>  <Plug>VimspectorPause

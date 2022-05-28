@@ -117,16 +117,20 @@ let g:floaterm_width=0.7
 hi FloatermBorder guibg=orange guifg=cyan
 
 " 基于floaterm实现的快速命令功能
-let g:quickCompileCommand = ""
-let g:quickRunCommand = ""
+let g:quick_F2 = ""
+let g:quick_F3 = ""
+let g:quick_F4 = ""
 
 function! QuickCommand(args, create)
     " 选择
     let l:command = ""
-    if a:args == "compile"
-        let command = g:quickCompileCommand 
-    elseif a:args == "run"
-        let command = g:quickRunCommand
+
+    if a:args == "F2"
+        let command = g:quick_F2
+    elseif a:args == "F3"
+        let command = g:quick_F3
+    elseif a:args == "F4"
+        let command = g:quick_F4
     endif
 
     if (command == "") 
