@@ -21,7 +21,7 @@ source ~/.config/nvim/my_config.vim
 source ~/.config/nvim/my_shortcut.vim
 
 """""""""""""""""""""""""""""""""""""""
-"  基础配置
+"  全局基础配置
 """""""""""""""""""""""""""""""""""""""
 set jumpoptions+=stack
 set nu	
@@ -35,6 +35,35 @@ set encoding=UTF-8
 set fileencodings=utf-8,ucs-bom,cp936,gbk,gbk2312
 set fileencoding=utf-8
 
-if filereadable(".workspace.vim")
-    execute "source .workspace.vim"
+"""""""""""""""""""""""""""""""""""""""
+"  局部基础配置
+"""""""""""""""""""""""""""""""""""""""
+" 局部配置相关的路径
+let g:nvim_root = "/home/fenghan/.config/nvim"
+let g:local_root = nvim_root."/.local"
+let g:curr_root = substitute(substitute(system("pwd"), "\n", "", "g"), "/", "_", "g")[1:]
+let g:curr_local_root = local_root."/".curr_root
+let g:session_path = curr_local_root."/session.vim"
+let g:local_config_path = g:curr_local_root."/local_config.vim"
+
+if file_readable(g:local_config_path)
+    execute "source ".g:local_config_path
 endif
+
+function FOpenLocalConfig() 
+    if !isdirectory(g:curr_local_root)
+        execute("!mkdir ".g:curr_local_root) 
+    endif
+    if !file_readable(g:local_config_path)
+        execute("!cp ".g:nvim_root."/example/local_config.vim"." ".g:curr_local_root) 
+    endif
+    execute("e ".g:local_config_path)
+    call feedkeys("\<ESC>")
+endfunction
+execute "autocmd BufWritePost ".g:local_config_path." bufdo! source ".g:local_config_path
+
+command OpenLocalConfig             call FOpenLocalConfig()
+command RemoveLocalConfig           execute("!trash ".g:curr_local_root)
+command OpenGlobalInit              e ~/.config/nvim/init.vim
+command OpenGlobalConfig            e ~/.config/nvim/my_config.vim
+command OpenGlobalShortcut          e ~/.config/nvim/my_shortcut.vim

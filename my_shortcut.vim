@@ -79,9 +79,3 @@ nmap <silent> <F9>          <Plug>VimspectorToggleBreakpoint
 nmap <silent> <leader><F9>  <Plug>VimspectorAddFunctionBreakpoint
 nmap <silent> <F10>         <Plug>VimspectorStepOver
 
-"""""""""""""""""""""""""""""""""
-" 其他辅助功能
-"""""""""""""""""""""""""""""""""
-command OpenInit            e ~/.config/nvim/init.vim
-command OpenConfig          e ~/.config/nvim/my_config.vim
-command OpenShortcut        e ~/.config/nvim/my_shortcut.vim

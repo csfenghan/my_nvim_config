@@ -194,5 +194,7 @@ let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_transparent_bg = 1
 set termguicolors
 set guifont=DroidSansMono\ Nerd\ Font\ 11
-autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
+"autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
 colorscheme gruvbox
+hi Normal ctermbg=NONE guibg=NONE
+
