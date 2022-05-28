@@ -142,12 +142,12 @@ function! QuickCommand(args, create)
     let @a = command
 
     if a:create
-        FloatermToggle<CR>
-        call feedkeys("\<A-q>")
+        FloatermNew
+        "call feedkeys("\<A-q>")
     endif
     set modifiable
     put a
-    call feedkeys("A\<CR>")
+    call feedkeys("\<CR>")
 
     let @a = temp
 endfunction
