@@ -10,7 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'preservim/nerdtree'                               "目录树
     Plug 'puremourning/vimspector'                          "调试
     Plug 'kyazdani42/nvim-web-devicons'                     " Recommended (for coloured icons)
-    "Plug 'ryanoasis/vim-devicons'                           " Icons without colours
+    Plug 'ryanoasis/vim-devicons'                           " Icons without colours
     Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
     Plug 'csfenghan/custom-vim'
     Plug 'tpope/vim-fugitive'                               " 在vim中执行git命令
@@ -23,9 +23,10 @@ source ~/.config/nvim/my_shortcut.vim
 """""""""""""""""""""""""""""""""""""""
 "  全局基础配置
 """""""""""""""""""""""""""""""""""""""
+syntax on
 set jumpoptions+=stack
 set nu	
-syntax on
+set mouse=a
 set tabstop=4
 set shiftwidth=4
 set expandtab                                               "空格代替tab
@@ -40,6 +41,32 @@ augroup VCenterCursor                                       " 光标总是在居
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
         \ let &scrolloff=winheight(win_getid())/4
 augroup END
+
+
+" 主题配置
+let g:airline_powerline_fonts = 1
+let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_transparent_bg = 1
+
+set termguicolors
+" gui配置
+if exists("g:gonvim_running")
+    let g:airline#extensions#tabline#enabled = 0
+    colorscheme gruvbox
+elseif exists("g:neovide")
+    let g:neovide_transparency=0.85
+    let g:neovide_fullscreen=v:true
+    let g:neovide_remember_window_size = v:true
+    let g:guifont = Consolas:h24
+    colorscheme gruvbox
+    hi Normal ctermbg=NONE guibg=NONE
+else                                                        " 实际上windows terminal就支持鼠标功能，所以自带的就挺好用
+    let g:airline#extensions#tabline#enabled = 1
+    colorscheme gruvbox
+    hi Normal ctermbg=NONE guibg=NONE
+endif
+
+
 """""""""""""""""""""""""""""""""""""""
 "  局部基础配置
 """""""""""""""""""""""""""""""""""""""

@@ -113,7 +113,8 @@ endfunction
 " vim-floaterm
 """"""""""""""""""""""""""""
 let g:floaterm_height=0.7
-let g:floaterm_width=0.7
+let g:floaterm_width=0.8
+let g:floaterm_wintype = "bottom"
 hi FloatermBorder guibg=orange guifg=cyan
 
 " 基于floaterm实现的快速命令功能
@@ -143,11 +144,14 @@ function! QuickCommand(args, create)
 
     if a:create
         FloatermNew
-        "call feedkeys("\<A-q>")
     endif
     set modifiable
     put a
-    call feedkeys("\<CR>")
+    if a:create
+        call feedkeys("\<CR>")
+    else
+        call feedkeys("A\<CR>")
+    endif
 
     let @a = temp
 endfunction
@@ -189,16 +193,3 @@ require('bufferline').setup {
 }
 
 EOF
-
-""""""""""""""""""""""""""""
-" gui配置
-""""""""""""""""""""""""""""
-let g:airline_powerline_fonts = 1
-let g:gruvbox_contrast_dark = 'soft'
-let g:gruvbox_transparent_bg = 1
-set termguicolors
-set guifont=DroidSansMono\ Nerd\ Font\ 11
-"autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
-colorscheme gruvbox
-hi Normal ctermbg=NONE guibg=NONE
-
