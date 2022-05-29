@@ -61,7 +61,6 @@ elseif exists("g:neovide")
     colorscheme gruvbox
     hi Normal ctermbg=NONE guibg=NONE
 else                                                        " 实际上windows terminal就支持鼠标功能，所以自带的就挺好用
-    let g:airline#extensions#tabline#enabled = 1
     colorscheme gruvbox
     hi Normal ctermbg=NONE guibg=NONE
 endif

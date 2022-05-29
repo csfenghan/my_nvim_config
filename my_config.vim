@@ -172,23 +172,27 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 """"""""""""""""""""""""""""
 lua << EOF
 require('bufferline').setup {
-  highlights = {
-    buffer_selected = {
-      --guifg=normal,
-      --guibg=0xC0C0C0,
-      gui="italic" 
-    }        
-  },
   options = {
     -- 使用 nvim 内置lsp
-    diagnostics = "nvim_lsp",
-    -- 左侧让出 nvim-tree 的位置
-    offsets = {{
-      filetype = "NvimTree",
-      text = "File Explorer",
-      highlight = "Directory",
-      text_align = "left"
-    }}
+    diagnostics = "coc",
+    mode = "buffers", -- set to "tabs" to only show tabpages instead
+    numbers = "none",
+    close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
+    --right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
+    left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
+    middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
+    indicator_icon = '▎',
+    buffer_close_icon = '',
+    modified_icon = '●',
+    close_icon = '',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
+    name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
+      -- remove extension from markdown files for example
+      if buf.name:match('%.md') then
+        return vim.fn.fnamemodify(buf.name, ':t:r')
+      end
+    end,
   }
 }
 
